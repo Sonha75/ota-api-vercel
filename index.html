@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTA</title>
+</head>
+<body>
+
+<h1>
+  UPLOAD FIRMWARE
+</h1>
+ 
+ <!--  SINGLE FILE -->
+<form action="/uploadfile" enctype="multipart/form-data" method="POST">
+    <div>Upload a file</div> 
+   <input type="file" name="myFile" />
+   <input type="submit" value="Upload a file"/>
+</form>
+ 
+ 
+<!-- MULTIPLE FILES -->
+ 
+<form action="/uploadmultiple"  enctype="multipart/form-data" method="POST">
+  <div>Upload multifiles</div> 
+  <input type="file" name="myFiles" multiple>
+  <input type="submit" value="Upload your files"/>
+</form>
+
+<form action="/OTA" method="POST">
+  <input type="submit" name="ota" style="font-size: 20px; margin-top: 20px; margin-left: 40px;"></input>
+</form>
+ 
+  <!--   PHOTO-->
+<!--  
+<form action="/upload/photo" enctype="multipart/form-data" method="POST"> 
+  <input type="file" name="myImage" accept="image/*" />
+  <input type="submit" value="Upload Photo"/>
+</form>
+  -->
+ 
+ 
+</body>
+</html>
