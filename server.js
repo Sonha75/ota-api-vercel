@@ -9,6 +9,14 @@ const app = express();
 
 const topic = "esp8266/dyLinh_dev/ota_stm32"
 
+client.on('connect', function(){
+	// client.publish(topic, 'Hello', { qos: 0, retain: true }, (error) => {
+	// 	if (error) {
+	// 	  console.error(error)
+	// 	}
+	// })
+	console.log('Connect to mqtt broker')
+})
 
 // SET STORAGE
 var storage = multer.diskStorage({
@@ -51,12 +59,10 @@ app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {
 })
 
 app.post('/OTA', (req, res) => {
-	client.on('connect', () => {
-		client.publish(topic, 'OTA', { qos: 0, retain: true }, (error) => {
-		  if (error) {
-			console.error(error)
-		  }
-		})
+	client.publish(topic, 'OTA', { qos: 0, retain: true }, (error) => {
+		if (error) {
+		console.error(error)
+		}
 	})
 	res.send('Start updating firmware !!!')
 })
