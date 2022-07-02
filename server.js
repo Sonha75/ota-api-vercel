@@ -6,7 +6,7 @@ const mqtt = require("mqtt")
 var client = mqtt.connect('mqtt://test.mosquitto.org')
 
 const app = express();
-
+const port = process.env.PORT || 5500
 const topic = "esp8266/dyLinh_dev/ota_stm32"
 
 client.on('connect', function(){
@@ -84,4 +84,4 @@ app.get('/',function(req,res){
   
 //server.js
   
-app.listen(5500, () => console.log('Server started on port 5500'));
+app.listen(port, () => console.log('Server started on port 5500'));
