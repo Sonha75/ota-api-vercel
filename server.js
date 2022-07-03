@@ -58,7 +58,7 @@ app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {
 })
 
 app.post('/OTA', (req, res) => {
-	client.publish(topic, 'OTA', { qos: 0, retain: true }, (error) => {
+	client.publish(topic, 'OTA', { qos: 0, retain: false }, (error) => {
 		if (error) {
 		console.error(error)
 		}
