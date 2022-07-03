@@ -6,7 +6,7 @@ const mqtt = require("mqtt")
 var client = mqtt.connect('mqtt://test.mosquitto.org')
 
 const app = express();
-const topic = "esp8266/dyLinh_dev/ota_stm32"
+const topic = "esp8266/dyLinh_dev/ver_001/ota_stm32"
 
 client.on('connect', function(){
 	// client.publish(topic, 'Hello', { qos: 0, retain: true }, (error) => {
