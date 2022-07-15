@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser= require('body-parser')
 const multer = require('multer')
 const mqtt = require("mqtt")
-var client = mqtt.connect('mqtt://test.mosquitto.org')
+var client = mqtt.connect('mqtt://broker.hivemq.com')
 
 const app = express();
 const topic = "esp8266/dyLinh_dev/ver_001/ota_stm32"
