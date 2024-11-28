@@ -6,14 +6,14 @@ const mqtt = require("mqtt")
 var client = mqtt.connect('mqtt://broker.hivemq.com')
 
 const app = express();
-const topic = "esp8266/dyLinh_dev/ver_001/ota_stm32"
+const topic = "esp32/sonha/otaSTM32"
 
 client.on('connect', function(){
 	// client.publish(topic, 'Hello', { qos: 0, retain: true }, (error) => {
-	// 	if (error) {
-	// 	  console.error(error)
-	// 	}
-	// })
+		if (error) {
+		  console.error(error)
+		}
+	
 	console.log('Connect to mqtt broker')
 })
 
@@ -58,6 +58,9 @@ app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {
 })
 
 app.post('/OTA', (req, res) => {
+	if (!client.connected) {
+		client = mqtt.connect('mqtt://broker.hivemq.com'); 
+	  }
 	client.publish(topic, 'OTA', { qos: 0, retain: false }, (error) => {
 		if (error) {
 		console.error(error)
@@ -84,3 +87,4 @@ app.get('/',function(req,res){
 //server.js
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server started on port ${port}`));
+module.exports = app;
